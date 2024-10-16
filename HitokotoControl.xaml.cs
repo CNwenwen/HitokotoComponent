@@ -9,7 +9,7 @@ using MaterialDesignThemes.Wpf;
 namespace HitokotoComponent
 {
     [ComponentInfo(
-            "3DFE17BA-92D3-9E14-F5CA-CC9EE40C5F58",
+        "81941A41-314C-4117-981B-920AEE1E3EB3",
             "一言",
             PackIconKind.CalendarOutline,
             "在主界面显示一言。"
@@ -24,11 +24,19 @@ namespace HitokotoComponent
             LoadHitokotoAsync();
         }
 
-        private async void LoadHitokotoAsync()
+        public async void LoadHitokotoAsync()
         {
             try
             {
-                var result = await _httpClient.GetStringAsync("https://v1.hitokoto.cn/?encode=text");
+                var result = "等待";
+                if ( PluginSettingsPage.Mode == 0)
+                {
+                    result = await _httpClient.GetStringAsync("https://v1.hitokoto.cn/?encode=text");
+                }
+                else
+                {
+                    result = await _httpClient.GetStringAsync("https://v1.hitokoto.cn/?encode=text");
+                }
                 Dispatcher.Invoke(() => HitokotoText.Text = result);
             }
             catch (HttpRequestException)

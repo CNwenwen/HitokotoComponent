@@ -11,6 +11,7 @@ namespace HitokotoComponent
     {
         public override void Initialize(HostBuilderContext context, IServiceCollection services)
         {
+            services.AddSettingsPage<PluginSettingsPage>();
             services.AddComponent<HitokotoControl>();
         }
     }
