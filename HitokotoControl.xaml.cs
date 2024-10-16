@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using ClassIsland.Core.Controls;
 using System.Windows;
+using System.Windows.Threading;
 using ClassIsland.Core.Abstractions.Controls;
 using ClassIsland.Core.Attributes;
 using MaterialDesignThemes.Wpf;
@@ -37,12 +38,29 @@ namespace HitokotoComponent
                 {
                     result = await _httpClient.GetStringAsync("https://v1.hitokoto.cn/?encode=text");
                 }
-                Dispatcher.Invoke(() => HitokotoText.Text = result);
+                CheckLength(result,PluginSettingsPage.MaxLength);
             }
             catch (HttpRequestException)
             {
                 Dispatcher.Invoke(() => HitokotoText.Text = "加载失败");
             }
+        }
+
+        public void CheckLength(string text, int maxlength)
+        {
+            if (text.Length > maxlength)
+            {
+                LoadHitokotoAsync();
+            }
+            else
+            {
+                SettingText(text);
+            }
+        }
+
+        private void SettingText(string text)
+        {
+            Dispatcher.Invoke(() => HitokotoText.Text = text);
         }
     }
 }

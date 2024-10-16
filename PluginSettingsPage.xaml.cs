@@ -16,6 +16,7 @@ namespace HitokotoComponent;
 public partial class PluginSettingsPage : SettingsPageBase
 {
     public static int Mode { get; set; }
+    public static int MaxLength { get; set; }
     public PluginSettingsPage()
     {
         InitializeComponent();
