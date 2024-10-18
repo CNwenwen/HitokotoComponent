@@ -20,11 +20,21 @@ public partial class PluginSettingsPage : SettingsPageBase
     public PluginSettingsPage()
     {
         InitializeComponent();
+        Mode = 0;
+        MaxLength = 17;
     }
 
     private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var cb = sender as ComboBox;
         Mode = cb.SelectedIndex;
+        Console.WriteLine(Mode);
+    }
+
+    private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var tb = sender as TextBox;
+        MaxLength = int.Parse(tb.Text);
+        Console.WriteLine(MaxLength);
     }
 }

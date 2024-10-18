@@ -45,7 +45,9 @@ namespace HitokotoComponent
                 Dispatcher.Invoke(() => HitokotoText.Text = "加载失败");
             }
         }
-
+        /// 预留一个CheckLength方法
+        /// text是传的文本，
+        /// maxlength是最大长度
         public void CheckLength(string text, int maxlength)
         {
             if (text.Length > maxlength)
@@ -57,7 +59,7 @@ namespace HitokotoComponent
                 SettingText(text);
             }
         }
-
+        
         private void SettingText(string text)
         {
             Dispatcher.Invoke(() => HitokotoText.Text = text);

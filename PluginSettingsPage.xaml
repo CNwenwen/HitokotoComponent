@@ -25,7 +25,7 @@
             <ci:SettingsCard IconGlyph="AccountBoxOutline" Header="数据选择"
                                     Description="选择一个一言数据源">
                 <ci:SettingsCard.Switcher>
-                    <ComboBox>
+                    <ComboBox SelectionChanged="Selector_OnSelectionChanged">
                         <ComboBoxItem Content="v1.hitokoto.cn"></ComboBoxItem>
                         <ComboBoxItem IsEnabled="False" Content="api.polarisnetwork.cloud"></ComboBoxItem>
                     </ComboBox>
@@ -34,7 +34,7 @@
             <ci:SettingsCard IconGlyph="AccountBoxOutline" Header="最大长度"
                              Description="设置一言的最大长度，最小17，≥50则为无上限。">
                 <ci:SettingsCard.Switcher>
-                    <TextBox MaxWidth="200" Text="17"></TextBox>
+                    <TextBox TextChanged="TextBoxBase_OnTextChanged" MaxWidth="200" Text="17"></TextBox>
                 </ci:SettingsCard.Switcher>
             </ci:SettingsCard>
             <ci:SettingsCard IconGlyph="AccountBoxOutline" Header="刷新时间"
